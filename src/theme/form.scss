@@ -1,0 +1,286 @@
+/* Text area Css Start */
+.textarea {
+  font-size: 14px;
+  color: #343a40;
+  --border-color: #d4d4d4;
+  font-family: "roboto" !important;
+
+  .label-floating {
+    -webkit-transform: translateY(12%) !important;
+    transform: translateY(12px) !important;
+  }
+
+  &.item-has-focus {
+    --show-full-highlight: 0.65;
+    --highlight-background: #d4d4d4;
+    --highlight-color-valid: #343a40;
+
+    ion-label {
+      font-size: 14px;
+      color: #343a40;
+      transform: translateY(-10px) !important;
+    }
+  }
+
+  &.item-has-value {
+    ion-label {
+      font-size: 14px;
+      color: #343a40;
+      transform: translateY(-10px) !important;
+      font-family: "inter";
+    }
+  }
+
+  &.item-interactive-disabled {
+    --background: #d4d4d4;
+  }
+}
+
+ion-textarea {
+  --padding-top: 3px;
+  --padding-bottom: 3px;
+}
+/* Text area Css End */
+
+/* Textbox Css Start */
+.textbox {
+  --border-color: #d4d4d4;
+  --height: 42px;
+  --min-height: 42px;
+  font-family: "Inter" !important;
+  color: #343a40; //before label font style
+  font-size: 14px;
+
+  ion-input {
+    --padding-top: 0px;
+    --padding-bottom: 0px;
+    transform: translateY(-10px);
+    font-family: "inter";
+  }
+
+  ion-label {
+    transform: translateY(12px);
+    font-family: "inter";
+  }
+}
+
+.textbox.item-has-focus {
+  --highlight-color-valid: #343a40;
+  --show-full-highlight: 0.65;
+  --highlight-background: #d4d4d4;
+
+  ion-label {
+    font-size: 14px;
+    color: #343a40;
+    transform: translateY(-10px) !important;
+    font-family: "inter";
+  }
+}
+
+.textbox.item-has-value {
+  ion-label {
+    font-size: 14px;
+    color: #343a40;
+    transform: translateY(-10px) !important;
+    font-family: "inter";
+  }
+
+  .textbox.item-interactive-disabled {
+    --background: #d4d4d4;
+  }
+}
+
+.textbox.read-only {
+  --background: #f9f9f9;
+}
+
+/* Textbox Css End */
+
+/* Dropdown Css Start */
+.dropdown {
+  --border-color: #d4d4d4;
+  --height: 42px;
+  --min-height: 42px;
+  font-family: "Inter" !important;
+  color: #343a40; //before label font style
+  font-size: 14px;
+
+  &.multiselect {
+    overflow: hidden;
+  }
+
+  ion-select {
+    transform: translateY(-16px);
+  }
+
+  ion-label {
+    transform: translateY(12px);
+  }
+
+  &::part(native) {
+    border-color: #d4d4d4;
+  }
+
+  ion-select::part(icon) {
+    content: url("../assets/icon/Union.png");
+    width: 10px;
+    height: 8px;
+    opacity: 1;
+  }
+}
+
+.dropdown.item-has-focus,
+.dropdown.ion-focused {
+  --highlight-color-valid: #343a40;
+  --show-full-highlight: 0.65;
+  color: #343a40;
+}
+
+.dropdown.item-has-value {
+  ion-label {
+    font-size: 14px;
+    color: #343a40;
+    transform: translateY(-10px) !important;
+  }
+
+  ion-select {
+    transform: translateY(-10px);
+  }
+}
+
+.dropdown.item-interactive-disabled {
+  --background: #d4d4d4;
+}
+
+/* Dropdown Css End */
+
+/*Form label start*/
+.form-label {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #343a40;
+  font-family: inter;
+}
+
+.form-label-info {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+  padding: 3px 0;
+}
+
+/*Form label end*/
+
+/*error message start*/
+
+.form-error-message {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 17px;
+  color: #c7152a;
+  margin-left: 8px;
+  font-style: italic;
+}
+
+/*error message end*/
+
+/*form element start*/
+
+.form-element {
+  padding: 7.5px;
+}
+
+/*form element end*/
+
+/*Stacked dropdown start*/
+.dropdown-stacked {
+  --border-color: #d4d4d4;
+  --height: 42px;
+  --min-height: 42px;
+  font-family: "Inter" !important;
+  color: #343a40; //before label font style
+  font-size: 16px;
+
+  &.multiselect {
+    overflow: hidden;
+  }
+
+  ion-select {
+    transform: translateY(-10px);
+  }
+
+  ion-select::part(icon) {
+    content: url("../assets/icon/Union.png");
+    width: 10px;
+    height: 8px;
+    transform: translate3d(0px, 0px, 0px);
+    opacity: 1;
+  }
+}
+
+.dropdown-stacked.item-has-focus {
+  --highlight-color-valid: #343a40;
+  --show-full-highlight: 0.65;
+
+  &::part(native) {
+    border-color: #d4d4d4;
+  }
+
+  ion-select::part(icon) {
+    transform: translate3d(0px, 0px, 0px) rotate(180deg);
+  }
+
+  ion-label {
+    color: #343a40;
+  }
+}
+
+.dropdown-stacked.item-interactive-disabled {
+  --background: #d4d4d4;
+}
+
+.dropdown-stacked.ion-focused {
+  --highlight-color-valid: #343a40;
+  --show-full-highlight: 0.65;
+}
+
+/*form dropdown stacked end*/
+
+/* textbox-stacked Css Start */
+.textbox-stacked {
+  --border-color: #d4d4d4;
+  --height: 42px;
+  --min-height: 42px;
+  color: #343a40; //before label font style
+  font-size: 14px;
+}
+
+.textbox-stacked.item-has-focus {
+  --highlight-color-valid: #343a40;
+  --show-full-highlight: 0.65;
+}
+
+.textbox-stacked.item-interactive-disabled {
+  --background: #d4d4d4;
+}
+
+/* textbox-stacked Css End */
+
+//* form mandatory- field start*//
+.mandatory-field {
+  color: #c7152a;
+  padding-left: 2px;
+  font-size: 14px;
+  font-family: "Inter" !important;
+}
+
+//*form mandatory- field end*//
+
+//button padding
+.custom-btn-paddding {
+  padding: 10px 40px 10px 40px !important;
+  height: 36px;
+}

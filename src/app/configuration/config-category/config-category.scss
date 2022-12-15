@@ -1,0 +1,26 @@
+@import "../../../theme/table.scss";
+
+.category-grid-container {
+  background-color: #fafafa;
+  height: 80vh;
+}
+
+//columns style start
+.w-50 {
+  min-width: 100px;
+  max-width: 100px;
+}
+.w-75 {
+  min-width: 160px;
+  max-width: 160px;
+}
+.w-100 {
+  min-width: 180px;
+  max-width: 180px;
+}
+///columns style end
+
+.category-table-popover {
+  --width: 150px;
+  --height: 160px;
+}

@@ -1,0 +1,72 @@
+@import "../../../../theme/form.scss";
+
+* {
+  font-family: inter;
+}
+
+ion-header {
+  ion-buttons {
+    margin: 14px 50px 14px 25px;
+
+    ion-button {
+      font-size: 14px;
+      margin: 0px 25px;
+      padding: 0px 0px;
+      border-radius: 4px;
+      font-weight: 500;
+      border: 1.4px solid #079f71;
+      color: #079f71;
+    }
+
+    ion-button {
+      background: #eefffa;
+    }
+  }
+}
+
+ion-content {
+  --background: 100%;
+  background-color: #fafafa;
+
+  ion-card {
+    background-color: white;
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.17);
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .create-container {
+    background-color: #fafafa;
+  }
+}
+
+/* form footer button*/
+
+.form-buttons-container {
+  margin-bottom: 20px;
+
+  .form-button-save {
+    background: #079f71;
+    border: 0.5px solid #079f71;
+    color: #ffffff;
+    border-radius: 3px;
+    text-transform: none;
+    font-family: 'Roboto' !important;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .form-button-cancel {
+    background-color: white;
+    border: 0.5px solid #0f261f;
+    margin-left: 10px;
+    border-radius: 3px;
+    text-transform: none;
+    font-family: 'Roboto';
+    font-weight: 400;
+    cursor: pointer;
+  }
+}
+
+/* form footer button*/

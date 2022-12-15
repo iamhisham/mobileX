@@ -1,0 +1,41 @@
+@import "../../../theme/form.scss";
+
+* {
+  font-family: Roboto;
+}
+
+.title-container {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 27px;
+  padding-left: 0;
+  color: #344563;
+  font-family: "inter";
+}
+
+ion-content {
+  --background: 100%;
+  background-color: #fafafa;
+
+  ion-card {
+    background-color: white;
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.17);
+    border-radius: 5px;
+    margin-top: 20px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+
+    ion-input {
+      font-family: "Roboto";
+    }
+  }
+
+  .device-container {
+    background-color: #fafafa;
+  }
+
+  .input-font-family {
+    font-family: 'roboto';
+  }
+}

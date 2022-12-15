@@ -1,0 +1,197 @@
+@import "../../../theme/table.scss";
+// .template-grid-container {
+//   height: 100%;
+//   padding: 0px;
+//   ion-row {
+//     height: 100%;
+//   }
+// }
+
+.wrappper {
+  // background-color: #fafafa !important;
+  height: 100%;
+  .template-grid-container {
+    padding: 0%;
+    height: 100%;
+    ion-row {
+      // height: 100%;
+    }
+  }
+}
+
+ion-content {
+  ion-grid {
+    // padding: 0px;
+    .template-side-container {
+      border-right: 0.5px solid #dadada;
+      .filter-search-option {
+        padding: 34px 25px 5px 25px;
+        color: #344563;
+        .filter-option {
+          font-weight: 600;
+        }
+        .ion-search-bar {
+          margin-top: 20px;
+          --box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
+            rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+          --border-radius: 24px;
+          --icon-color: #50f40c;
+          --color: #0f261f;
+        }
+      }
+    }
+  }
+}
+
+//checkbox style
+ion-checkbox {
+  --size: 15px;
+  --background-checked: #079f71;
+}
+ion-checkbox::part(container) {
+  border: 1.8px solid rgba(128, 128, 128, 0.295);
+  border-radius: 2px;
+}
+
+// category list design ***
+.category-list {
+  line-height: 0px;
+  padding-top: 0px;
+  padding: 0px 9px;
+  color: #344563;
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 600;
+  .category-list-header {
+    padding-left: 10px !important;
+    background-color: red;
+    ion-list-header {
+      font-weight: 600;
+      font-size: 14px;
+      color: #344563;
+      background-color: blue !important;
+      ion-text {
+      }
+      ion-label {
+        font-family: "Roboto" !important;
+        a {
+          color: #079f71;
+          font-family: "Roboto";
+        }
+      }
+    }
+    ion-button {
+      text-transform: none;
+    }
+  }
+}
+
+// for col 3
+ion-searchbar.ion-custom-search {
+  --background: #fafafa;
+  --color: rgb(6, 0, 0);
+  --placeholder-color: rgb(0, 0, 0);
+  --icon-color: #50f40c;
+  --border-radius: 24px;
+  --box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
+    rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+  height: 40px !important;
+  width: 227px;
+  font-family: "Inter";
+  --placeholder-font-weight: 400;
+  --placeholder-font-style: normal;
+  margin-right: 17px;
+}
+
+.category-btn {
+  font-family: "Inter";
+  --ion-color-dark-contrast: #50f40c;
+  width: 210px;
+  height: 41px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  --vertical-align: middle;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+  --border-radius: 7px;
+}
+
+//for col 9
+
+.right-content {
+  background-color: #fafafa !important;
+}
+.template-container {
+  background-color: #fafafa;
+  padding-bottom: 20px;
+  height: 100%;
+}
+
+//columns style start
+.w-50 {
+  min-width: 100px;
+  max-width: 100px;
+}
+.w-75 {
+  min-width: 160px;
+  max-width: 160px;
+}
+.w-100 {
+  min-width: 180px;
+  max-width: 180px;
+}
+
+.channals_logo {
+  display: flex;
+  flex-direction: row;
+  ion-img {
+    width: 18px;
+    height: 14px;
+    margin: 3%;
+  }
+}
+
+.scrollable-content {
+  width: 100%;
+  height: 420px;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.scrollable-content .category_list {
+  font-size: 14px;
+  padding: 0% !important;
+  --background: #fbfbfb;
+}
+
+.category_list ion-label {
+  line-height: 0%;
+  font-size: 12px;
+}
+
+.category-content {
+  padding: 0% 4% 0% 4%;
+}
+
+// sidebar scroll
+
+.scrollable-content::-webkit-scrollbar {
+  width: 20px;
+}
+
+.scrollable-content::-webkit-scrollbar:vertical {
+  width: 8px;
+  background-color: #fff;
+}
+
+.scrollable-content::-webkit-scrollbar:horizontal {
+  height: 8px;
+  background-color: #fff;
+}
+.scrollable-content::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 1px solid #fff; /* should match background, can't be transparent */
+  background-color: rgba(128, 128, 128, 0.589);
+}

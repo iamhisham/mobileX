@@ -1,0 +1,82 @@
+<ion-header class="header-container ion-no-border">
+  <ion-toolbar>
+    <h1>Dynamic Tags</h1>
+  </ion-toolbar>
+</ion-header>
+<ion-content style="background-color: blue;">
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size-lg="12" class="ion-no-padding column-wrapper">
+        <div class="main-wrapper">
+          <div>
+            <ion-icon name="close-outline"></ion-icon>
+          </div>
+          <div class="content-wrapper">
+            <ion-item fill="outline" class="textbox">
+              <ion-label position="floating">Key
+              </ion-label>
+              <ion-input name="name"></ion-input>
+            </ion-item>
+            <ion-item fill="outline" class="dropdown">
+              <ion-label position="floating">=
+              </ion-label>
+              <ion-select class="ion-no-padding" [interfaceOptions]="notifiService.customPopoverOptions"
+                formControlName="priority" interface="popover">
+                <ion-select-option value="" class="mucustom">-Select-</ion-select-option>
+                <ion-select-option value="HIGH" class="mucustom">Mandatory</ion-select-option>
+                <ion-select-option value="MEDIUM" class="mucustom">Medium</ion-select-option>
+                <ion-select-option value="LOW" class="mucustom">Low</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item fill="outline" class="textbox">
+              <ion-label position="floating">Value
+              </ion-label>
+              <ion-input name="name"></ion-input>
+            </ion-item>
+          </div>
+        </div>
+        <div class="main-wrapper">
+          <div>
+            <ion-icon name="close-outline"></ion-icon>
+          </div>
+          <div class="content-wrapper">
+            <ion-item fill="outline" class="textbox">
+              <ion-label position="floating">Key
+              </ion-label>
+              <ion-input name="name"></ion-input>
+            </ion-item>
+            <ion-item fill="outline" class="dropdown">
+              <ion-label position="floating">=
+              </ion-label>
+              <ion-select class="ion-no-padding" [interfaceOptions]="notifiService.customPopoverOptions"
+                formControlName="priority" interface="popover">
+                <ion-select-option value="" class="mucustom">-Select-</ion-select-option>
+                <ion-select-option value="HIGH" class="mucustom">Mandatory</ion-select-option>
+                <ion-select-option value="MEDIUM" class="mucustom">Medium</ion-select-option>
+                <ion-select-option value="LOW" class="mucustom">Low</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item fill="outline" class="textbox">
+              <ion-label position="floating">Value
+              </ion-label>
+              <ion-input name="name"></ion-input>
+            </ion-item>
+          </div>
+        </div>
+
+      </ion-col>
+      <ion-col size-lg="12">
+        <div class="sub-btns">
+          <ion-button>
+            + Add
+          </ion-button>
+          <ion-button>
+            Save
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

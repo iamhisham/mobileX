@@ -1,0 +1,64 @@
+@import '../../../../theme/form.scss';
+
+ion-header {
+  ion-toolbar {
+    padding-left: 40px;
+    padding-top: 30px;
+    ion-title {
+      font-family: 'Inter';
+      font-weight: 600;
+      font-size: 16px;
+      color: #16392F;
+    }
+  }
+}
+
+.body-container {
+  margin: 0px 35px 25px 35px;
+  .category-title {
+    padding-left: 8px;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 14px;
+    color: #656D80;
+  }
+  ion-select {
+    width: 100%;
+  }
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  margin: 0px 40px;
+ 
+  .cancel-btn {
+    flex:1;
+    background: #FFFFFF;
+    border: 0.5px solid #079F71;
+    border-radius: 3px;
+    color: #079F71;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    margin-right: 30px;
+  }
+  
+  .proceed-btn {
+    flex:1;
+    background: #079F71;
+    border: 0.5px solid #079F71;
+    border-radius: 3px;   
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    color: #FFFFFF; 
+    margin-left: 30px;
+  }
+}
+
+ion-footer {
+  padding-bottom: 22px
+}

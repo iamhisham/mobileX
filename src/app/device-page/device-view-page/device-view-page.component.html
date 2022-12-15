@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-grid class="ion-no-padding">
+      <ion-row class="row-wrapper">
+        <ion-col class="title-column">
+          <div lines="none" class="title-content  ion-no-margin ion-no-padding">
+            <ion-icon name="arrow-back" class="back-icon" routerLink="/device"></ion-icon>
+            <h1>Device details</h1>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="device-container padding-hide-md-down">
+    <ion-row>
+      <ion-col size-xs="12" size-sm="12" size-md="12" size-lg="10" class="ion-no-padding">
+        <ion-card class="ion-no-padding ion-no-margin">
+          <ion-grid>
+            <ion-row>
+              <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" class="form-element"
+                *ngFor="let deviceStaticField of deviceStaticFieldList">
+                <ion-item fill="outline" class="textbox read-only item-has-value">
+                  <ion-label position="floating">{{deviceStaticField.name}}</ion-label>
+                  <ion-input class="input-font-family" *ngIf="deviceStaticField.type === 'DATE_TIME'"
+                    value="{{deviceDetails[deviceStaticField.key] | date: 'dd-MMM yy hh:mm a'}}"></ion-input>
+                  <ion-input class="input-font-family" *ngIf="deviceStaticField.type !== 'DATE_TIME'"
+                    value="{{deviceDetails[deviceStaticField.key]}}"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6" class="form-element"
+                *ngFor="let tag of deviceDetails.tags">
+                <ion-item fill="outline" class="textbox read-only item-has-value">
+                  <ion-label position="floating">{{tag.field}}</ion-label>
+                  <ion-input class="input-font-family" value="{{tag.value}}" readonly="true"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

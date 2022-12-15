@@ -1,0 +1,87 @@
+.header-container-lg {
+  border-bottom: 0.5px solid #dadada;
+}
+
+ion-buttons {
+  margin: 14px 50px 14px 25px;
+  ion-button {
+    font-size: 14px;
+    margin: 0px 25px;
+    padding: 0px 0px;
+  }
+}
+
+//Mobile View
+.navbar {
+  background-color: #ffffff;
+  height: 182px;
+  .config-mob-title {
+    margin: 0%;
+    padding: 0%;
+    display: flex;
+    align-items: center;
+    div {
+      margin-left: 2.7%;
+      h1 {
+        margin: 0%;
+        // padding-top: 10%;
+        font-size: 18px;
+        color: #344563;
+        font-family: "Roboto" !important;
+      }
+    }
+  }
+  .nav-container {
+    display: flex;
+    justify-content: center;
+    ion-card {
+      --background: #f7f7f7;
+      text-align: center;
+      height: 111px;
+      margin: 0% 2%;
+      padding: 0%;
+      width: 111px;
+      box-shadow: none;
+      border-radius: 12px;
+      ion-card-header {
+        display: flex;
+        justify-content: center;
+        ion-img {
+          height: 42px;
+          width: 42px;
+        }
+      }
+      ion-card-content {
+        font-weight: 400;
+        font-size: 12px;
+      }
+    }
+  }
+  //for mobile only
+  .active {
+    border-radius: 4px;
+    padding: 0px 4px;
+    border: 1.2px solid #0f261f;
+    background-color: #d3f1e8;
+    color: #079f71;
+    font-weight: 500;
+  }
+}
+
+// //Common activemenu header
+.active {
+  border-radius: 4px;
+  font-weight: 500;
+  border: 1.4px solid #079f71;
+  color: #079f71;
+}
+
+.active:hover {
+  background: #eefffa;
+}
+
+ion-button:hover {
+  padding: 0px;
+  border-radius: 4px;
+  background-color: #d3f1e8;
+}

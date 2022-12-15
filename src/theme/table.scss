@@ -1,0 +1,177 @@
+//table css starts
+* {
+  font-family: "Inter";
+}
+
+.table-outer-layout {
+  height: 326px;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+  scroll-behavior: smooth;
+  padding: 0px 12px;
+  border-radius: 3px;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.17);
+  background-color: #fff;
+
+  table {
+    width: 100%;
+    min-width: 800;
+  }
+  th {
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #0f261f;
+  }
+  td {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 15px;
+    color: #343a40;
+    font-family: "Roboto" !important;
+    span {
+      font-family: "Roboto" !important;
+    }
+    a {
+      font-family: "Roboto" !important;
+    }
+  }
+  //fixed right column - Edit Columns
+  td.mat-column-final {
+    width: 20px;
+    // padding-right: 8px;
+  }
+}
+.mat-mdc-row:hover .mat-mdc-cell {
+  background-color: #e7f6f2;
+  font-weight: 400;
+}
+//table CSS ends
+
+// popStyle
+ion-popover.edit-delete-popover {
+  --width: 140px;
+  --height: 115px;
+  font-weight: 500 !important;
+  ion-item {
+    font-size: 12px !important;
+    padding: 0px;
+    font-weight: 500 !important;
+    color: #343a40;
+  }
+}
+
+.category-table-popover {
+  ion-item {
+    font-size: 12px !important;
+    font-weight: 500;
+    color: #343a40;
+  }
+}
+//paginator style
+::ng-deep .mat-mdc-paginator-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between !important;
+  width: 100%;
+  margin: 0% !important;
+}
+.paginator-footer {
+  margin-top: 10px;
+  ::ng-deep .mat-mdc-paginator-outer-container {
+    background-color: #fafafa;
+  }
+}
+//custom sort arrow starts
+::ng-deep .mat-sort-header-arrow[style] {
+  // Hide default arrow stem
+  .mat-sort-header-stem {
+    display: none;
+  }
+  .mat-sort-header-indicator {
+    opacity: 1;
+    color: black;
+    font-weight: bold;
+    // Hide default arrow as its composed of left, right and middle
+    .mat-sort-header-pointer-left,
+    .mat-sort-header-pointer-right,
+    .mat-sort-header-pointer-middle {
+      display: none;
+    }
+  }
+}
+
+// My custom ascending arrow
+[aria-sort="ascending"] {
+  ::ng-deep .mat-sort-header-arrow {
+    .mat-sort-header-indicator {
+      &::before {
+        content: "\25B4";
+        top: -0em;
+        position: absolute;
+        color: #004e87;
+        font-size: 20px;
+        line-height: 10px;
+      }
+    }
+  }
+}
+// My custom descending arrow
+[aria-sort="descending"] {
+  ::ng-deep .mat-sort-header-arrow {
+    .mat-sort-header-indicator {
+      &::before {
+        content: "\25BE";
+        top: -14px;
+        position: absolute;
+        color: #004e87;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+//spinner
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 326px;
+  top: -0%;
+  z-index: 1;
+}
+
+//for Scroll
+::ng-deep .table-outer-layout::-webkit-scrollbar {
+  width: 20px;
+}
+::ng-deep .table-outer-layout::-webkit-scrollbar:vertical {
+  width: 10px;
+  background-color: rgb(233, 245, 233);
+}
+::ng-deep .table-outer-layout::-webkit-scrollbar:horizontal {
+  height: 10px;
+  background-color: rgb(233, 245, 233);
+}
+::ng-deep .table-outer-layout::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 1px solid rgb(233, 245, 233) !important; /* should match background, can't be transparent */
+  background-color: rgba(128, 128, 128, 0.589);
+}
+//overwriten global css - padding horizontal
+.padding-hide-md-down {
+  --ion-grid-padding-xl: 50px;
+  --ion-grid-padding-lg: 50px;
+  --ion-grid-padding-md: 50px;
+  --ion-grid-padding-sm: 9px;
+  --ion-grid-padding-xs: 9px;
+}
+
+// grid right 3 dot
+mat-icon {
+  font-family: "Material Icons" !important;
+}

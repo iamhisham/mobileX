@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-no-padding">Template Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="form-element">
+  <form [formGroup]="form" (ngSubmit)="proceed()">
+    <ion-grid class="body-container ion-no-padding">
+      <ion-row>
+        <ion-col size="12" class="ion-no-padding form-element">
+          <ion-item fill="outline" class="textbox">
+            <ion-label position="floating">Template Name <span class="mandatory-field">*</span> </ion-label>
+            <ion-input formControlName="name" [(ngModel)]="template.name" name="name"></ion-input>
+          </ion-item>
+          <ng-container
+            *ngIf="form.get('name')?.hasError('required') && (form.get('name')?.touched || form.get('name')?.dirty)">
+            <small class="form-error-message">This is a required field</small>
+          </ng-container>
+        </ion-col>
+        <ion-col size="12" class="ion-no-padding form-element">
+          <ion-item fill="outline" class="textbox">
+            <ion-label position="floating">Description</ion-label>
+            <ion-textarea [(ngModel)]="template.description" [ngModelOptions]="{standalone: true}"></ion-textarea>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" class="ion-no-padding form-element">
+          <ion-item fill="outline" class="dropdown-stacked">
+            <ion-label position="floating">Category <span class="mandatory-field">*</span> </ion-label>
+            <ion-select class="ion-no-padding" [(ngModel)]="template.category_id"
+              [interfaceOptions]="notifiService.customPopoverOptions" formControlName="category_id" interface="popover">
+              <ion-select-option value="">-Select Category-</ion-select-option>
+              <ion-select-option *ngFor="let category of categoryList" [value]="category.id">{{category.name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ng-container
+            *ngIf="form.get('category_id')?.hasError('required') && (form.get('category_id')?.touched || form.get('category_id')?.dirty)">
+            <small class="form-error-message">This is a required field</small>
+          </ng-container>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons lines="none" class="btns ion-no-padding">
+      <ion-button class="cancel-btn font-size" (click)="confirmCancel()" fill="clear">Cancel</ion-button>
+      <ion-button class="proceed-btn font-size" (click)="proceed()">Proceed</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

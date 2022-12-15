@@ -1,0 +1,180 @@
+<app-config-navigation-comp activeMenu="TEMPLATE"></app-config-navigation-comp>
+<ion-content class="ion-no-padding">
+  <div class="wrappper">
+    <ion-grid class="ion-no-padding" class="template-grid-container">
+      <ion-row>
+        <ion-col size-lg=" 3" size-md="0" size-sm="0" size-xs="0" class="template-side-container ion-no-padding"
+          style=" background-color: #ffffff;">
+          <ion-list class="filter-search-option ion-padding-horizontal">
+            <ion-label class="filter-option font-size ion-margin-vertical">Filter</ion-label>
+            <ion-searchbar placeholder="Search Category" [(ngModel)]="category_serach"
+              class="ion-search-bar ion-no-padding">
+            </ion-searchbar>
+          </ion-list>
+          <!-- category list  -->
+          <ion-list>
+            <ion-item class="category-list-header">
+              <ion-list-header class="font-size ion-no-padding">
+                <ion-text class="category-list">Category <span>({{categoryList.length}})</span></ion-text>
+                <ion-label style="text-align: right">
+                  <a style="font-family: 'Roboto';" [routerLink]="['/configuration/category/create']"
+                    class="font-size ion-no-padding ion-no-margin"><b>+</b> Add category</a>
+                </ion-label>
+              </ion-list-header>
+            </ion-item>
+            <!-- scrollable content -->
+            <div class="scrollable-content">
+              <div class="category-content">
+                <ion-item class="category_list" *ngIf="categoryList.length > 0">
+                  <ion-checkbox (click)="selectOrUnselectAllCategory($event)"
+                    [indeterminate]="selectedCategotyList.length > 0 && selectedCategotyList.length !== categoryList.length"
+                    [checked]="selectedCategotyList.length === categoryList.length"></ion-checkbox>
+                  <ion-label class="ion-padding"> All </ion-label>
+                </ion-item>
+                <ion-list class="category_list">
+                  <ion-item *ngFor="let filter of categoryList | filter: { name: category_serach }"
+                    class="category_list">
+                    <ion-checkbox (click)="filteredCategory($event, filter.id)"
+                      [checked]="selectedCategotyList.indexOf(filter.id) !== -1"></ion-checkbox>
+                    <ion-label class="ion-padding"> {{filter.name}} </ion-label>
+                  </ion-item>
+                </ion-list>
+              </div>
+            </div>
+          </ion-list>
+        </ion-col>
+        <ion-col size-lg="9" class="ion-no-padding right-content">
+          <ion-content>
+            <ion-grid class="padding-hide-md-down template-container">
+              <ion-row>
+                <ion-col size="12" class="ion-no-padding">
+                  <ion-row>
+                    <!-- two btn -->
+                    <ion-col size-lg="8" offset-lg="4" size-md="12" offset-md="0" size-sm="12" offset-sm="0"
+                      size-xs="12" offset-xs="0" class=" ion-no-padding ion-margin">
+                      <div class="table-top-layer-btns">
+                        <ion-searchbar placeholder="Search" show-clear-button="focus" matInput
+                          (ionChange)=" applyFilter($event)" #input class="ion-custom-search ion-no-padding ">
+                        </ion-searchbar>
+                        <ion-button routerLink="/configuration/template/create" expand="block"
+                          routerLinkActive="active-link" class="create-view-btn ion-no-margin ion-text-capitalize"
+                          color="dark">
+                          <ion-img slot="start" src="../../../assets/icon/TemplateCreateIcon.png">
+                          </ion-img>
+                          Create Template
+                        </ion-button>
+                      </div>
+                    </ion-col>
+                    <!-- Angular Material DATATABLE -->
+                    <ion-col size="12" offset="0" class="">
+                      <ion-row>
+                        <ion-col size-md="12" offset-md="0" size-sm="12" size-xs="12" class="ion-no-padding">
+                          <div class="">
+                            <section class=" mat-elevation-z8 table-outer-layout" #mytable>
+                              <div class="spinner" *ngIf="showSpinner">
+                                <mat-progress-spinner mode="indeterminate" diameter="50">
+                                </mat-progress-spinner>
+                              </div>
+                              <table mat-table [dataSource]="dataSource" matSort>
+                                <!-- id Column -->
+                                <ng-container matColumnDef="id">
+                                  <th mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'w-50'">
+                                    ID </th>
+                                  <td mat-cell *matCellDef="let element">
+                                    <a [routerLink]="['/configuration/template', element.id]">{{element.id}}</a>
+                                  </td>
+                                </ng-container>
+                                <!-- Templete Name  -->
+                                <ng-container matColumnDef="name">
+                                  <th mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'w-75'">
+                                    Template Name
+                                  </th>
+                                  <td mat-cell *matCellDef="let element" class="textCapitalize">
+                                    {{element.name}}
+                                  </td>
+                                </ng-container>
+                                <!-- category -->
+                                <ng-container matColumnDef="category" #target>
+                                  <th mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'w-75'"> Category
+                                  </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.category.name}} </td>
+                                </ng-container>
+                                <!-- channels -->
+                                <ng-container matColumnDef="channel">
+                                  <th mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'w-75'">Channel </th>
+                                  <td mat-cell *matCellDef="let element">
+                                    <div class="channals_logo">
+                                      <ion-img *ngIf="element.channels.indexOf('EMAIL') !== -1"
+                                        src="../../../assets/icon/Email.png" title="Email"></ion-img>
+                                      <ion-img *ngIf="element.channels.indexOf('WEB_PUSH') !== -1"
+                                        src="../../../assets/icon/Vector.png" title="Web Push">
+                                      </ion-img>
+                                      <ion-img *ngIf="element.channels.indexOf('MOBILE_PUSH') !== -1"
+                                        src="../../../assets/icon/ctgyphone.png" title="Mobile Push">
+                                      </ion-img>
+                                      <ion-img *ngIf="element.channels.indexOf('SMS') !== -1"
+                                        src="../../../assets/icon/ctgymessage.png" title="SMS">
+                                      </ion-img>
+                                      <ion-img *ngIf="element.channels.indexOf('IN_APP_MESSAGE') !== -1"
+                                        src="../../../assets/icon/ctgymenuImg.png" title="In App Message">
+                                      </ion-img>
+                                    </div>
+                                  </td>
+                                </ng-container>
+                                <!-- Star Column -->
+                                <ng-container matColumnDef="final" stickyEnd>
+                                  <th mat-header-cell *matHeaderCellDef aria-label="row actions" class="right-arrow">
+                                    <ion-icon name="chevron-forward-outline" class="ion-hide-lg-up"
+                                      style="font-size: 23px;" (click)="scrollRight()">
+                                    </ion-icon>
+                                  </th>
+                                  <td mat-cell *matCellDef="let element">
+                                    <mat-icon [id]="element.id" class="cursor-pointer">more_vert</mat-icon>
+                                    <ion-popover [trigger]="element.id" side="left" [dismissOnSelect]="true"
+                                      class="edit-delete-popover">
+                                      <ng-template>
+                                        <ion-content>
+                                          <ion-list>
+                                            <ion-item [button]="true"
+                                              [routerLink]="['/configuration/template',element.id]">Edit
+                                            </ion-item>
+                                            <ion-item [button]="true" (click)="confirmDelete(element.id, 'disabled')"
+                                              lines="none">
+                                              Disable
+                                            </ion-item>
+                                          </ion-list>
+                                        </ion-content>
+                                      </ng-template>
+                                    </ion-popover>
+                                  </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
+                                <tr class="mat-row" *matNoDataRow>
+                                  <td class="mat-cell" colspan="4">No data found <span
+                                      style="color: red;">{{input.value}}</span>
+                                  </td>
+                                </tr>
+                              </table>
+                            </section>
+                          </div>
+                        </ion-col>
+                        <ion-col size-md="12" offset-md="0" size-sm="12" size-xs="12" class="ion-no-padding">
+                          <div class="paginator-footer">
+                            <mat-paginator [pageSizeOptions]="[5, 10, 20]" class="mat-paginator-sticky"
+                              aria-label="Select page">
+                            </mat-paginator>
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-content>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

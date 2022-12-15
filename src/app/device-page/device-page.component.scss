@@ -1,0 +1,29 @@
+@import "../../theme/table.scss";
+
+.header-container {
+  border-bottom: 0.5px solid #dadada !important;
+}
+
+.device-grid-container {
+  background-color: #fafafa;
+  height: 80vh;
+}
+//search btn and categoty btn
+.ion-custom-search {
+  margin-right: 1px !important;
+  // global
+}
+
+//columns style start
+.w-50 {
+  min-width: 100px;
+  max-width: 100px;
+}
+.w-75 {
+  min-width: 130px;
+  max-width: 130px;
+}
+.w-100 {
+  min-width: 160px;
+  max-width: 160px;
+}

@@ -1,0 +1,119 @@
+<ion-header class="header-container ion-no-border">
+  <ion-toolbar>
+    <ion-grid class="ion-no-padding">
+      <ion-row class="row-wrapper">
+        <ion-col class="title-column">
+          <div lines="none" class="title-content  ion-no-margin ion-no-padding">
+            <h1>Device</h1>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-no-padding">
+  <ion-grid class="padding-hide-md-down device-grid-container">
+    <ion-row>
+      <ion-col size="12" class="ion-no-padding">
+        <ion-row>
+          <ion-col size-md="12" offset-md="0" class="ion-no-padding">
+            <ion-row>
+              <!--SEARCH BTN -->
+              <ion-col size-lg="4" size-md="6" size-sm="6" size-xs="9" offset-lg="8" offset-md="6" offset-sm="6"
+                offset-xs="3" class="ion-no-padding ion-margin-vertical">
+                <div class="table-top-layer-btns ion-padding-start">
+                  <ion-searchbar placeholder="Search" show-clear-button="focus" matInput
+                    (ionChange)=" applyFilter($event)" #input class="ion-custom-search ion-no-padding ">
+                  </ion-searchbar>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <!-- Angular Material DATATABLE -->
+          <ion-col size="12" offset="0" class="ion-no-padding">
+            <ion-row>
+              <ion-col size-md="12" offset-md="0" size-sm="12" size-xs="12" class="ion-no-padding">
+                <div>
+                  <section class=" mat-elevation-z8 table-outer-layout" #mytable>
+                    <div class="spinner" *ngIf="showSpinner">
+                      <mat-progress-spinner mode="indeterminate" diameter="50">
+                      </mat-progress-spinner>
+                    </div>
+                    <table mat-table [dataSource]="dataSource" matSort>
+                      <!-- Channel Type -->
+                      <ng-container matColumnDef="channel_type">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'w-100'">Channel Type </th>
+                        <td mat-cell *matCellDef="let element"> <a
+                            [routerLink]="['/device', element.id]">{{element.channel_type}}</a> </td>
+                      </ng-container>
+                      <!-- Identifier -->
+                      <ng-container matColumnDef="identifier">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'w-100'">Identifier</th>
+                        <td mat-cell *matCellDef="let element">
+                          {{element.identifier}}
+                        </td>
+                      </ng-container>
+                      <!-- Ext User Id -->
+                      <ng-container matColumnDef="external_user_id">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'w-75'">Ext User Id</th>
+                        <td mat-cell *matCellDef="let element"> {{element.external_user_id}} </td>
+                      </ng-container>
+                      <!-- Country -->
+                      <ng-container matColumnDef="country" #target>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'w-75'"> Country </th>
+                        <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+                      </ng-container>
+                      <!-- Time zone -->
+                      <ng-container matColumnDef="timezone" #target>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'w-75'"> Time zone </th>
+                        <td mat-cell *matCellDef="let element"> {{element.timezone}} </td>
+                      </ng-container>
+                      <!-- Created Time -->
+                      <ng-container matColumnDef="createdAt" #target>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'w-100'"> Created Time </th>
+                        <td mat-cell *matCellDef="let element"> {{element.createdAt | date: 'dd-MMM yy hh:mm a'}} </td>
+                      </ng-container>
+                      <!-- Star -->
+                      <ng-container matColumnDef="final" stickyEnd>
+                        <th mat-header-cell *matHeaderCellDef aria-label="row actions" class="right-arrow">
+                          <ion-icon name="chevron-forward-outline" class="ion-hide-md-up" style="font-size: 23px;"
+                            (click)="scrollRight()">
+                          </ion-icon>
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                          <mat-icon [id]="element.id" class="cursor-pointer">more_vert</mat-icon>
+                          <ion-popover [trigger]="element.id" [dismissOnSelect]="true" class="edit-delete-popover">
+                            <ng-template>
+                              <ion-content>
+                                <ion-list>
+                                  <ion-item [button]="true" [routerLink]="['/device',element.id]">View</ion-item>
+                                  <ion-item [button]="true" (click)="confirmDelete(element.id)" lines="none">Delete
+                                  </ion-item>
+                                </ion-list>
+                              </ion-content>
+                            </ng-template>
+                          </ion-popover>
+                        </td>
+                      </ng-container>
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
+                      <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="4">No data found <span style="color: red;">{{input.value}}</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </section>
+                </div>
+
+                <div class="paginator-footer">
+                  <mat-paginator [pageSizeOptions]="[5, 10, 20]" class="mat-paginator-sticky" aria-label="Select page">
+                  </mat-paginator>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

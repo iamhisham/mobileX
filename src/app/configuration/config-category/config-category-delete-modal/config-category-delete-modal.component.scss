@@ -1,0 +1,192 @@
+@import '../../../../theme/form.scss';
+
+ion-content {
+  .modal-header {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    color: #16392F;
+
+    h1 {
+      margin: 0px 0px 7px 0px;
+      text-align: center;
+      font-family: 'inter';
+      font-weight: 600;
+    }
+  }
+
+  .modal-subheading {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #828CA2;
+    text-align: center;
+    padding-bottom: 22px;
+    border-bottom: 0.5px solid #B6B6B6;
+  }
+
+  .modal-description {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    color: #343A40;
+    padding: 22px 45px;
+  }
+}
+
+ion-footer {
+  display: flex;
+
+  .btns {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    justify-content: center;
+    padding-bottom: 45px;
+
+    .move-temp,
+    .del-btn {
+      padding: 5px 5px;
+      margin-right: 7.5px;
+      min-width: 130px;
+      height: 36px;
+      color: #FFFFFF;
+      background: #079F71;
+      border: 0.5px solid #079F71;
+      border-radius: 3px;
+    }
+
+    .del-temp,
+    .keep-btn {
+      padding: 5px 5px;
+      margin-left: 7.5px;
+      min-width: 130px;
+      height: 36px;
+      color: #343A40;
+      background: #FFFFFF;
+      border: 0.5px solid #343A40;
+      border-radius: 3px;
+    }
+  }
+
+}
+
+// ------- 2nd screen
+
+.modal-subheading-2 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  color: #343A40;
+  padding: 0px 75px 24px 75px;
+}
+
+.modal-description-2 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  color: #343A40;
+
+  ion-label {
+    margin-left: 25px;
+  }
+
+  ion-item {
+    margin: 15px 25px;
+  }
+}
+
+
+// ------- 3rd & 4th screen
+
+.modal-header-3,
+.modal-header-4 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  color: #16392F;
+
+  h1 {
+    margin: 0px 0px 7px 0px;
+    text-align: center;
+  }
+}
+
+.modal-subheading-3,
+.modal-subheading-4 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #828CA2;
+  text-align: center;
+  padding-bottom: 22px;
+  border-bottom: 0.5px solid #B6B6B6;
+}
+
+.modal-description-3,
+.modal-description-4 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  color: #343A40;
+  padding: 22px 45px;
+}
+
+.modal-subdescription-3,
+.modal-subdescription-4 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  color: #343A40;
+
+  span {
+    font-weight: 600;
+  }
+}
+
+// ----------- loading spinner
+
+.loading-spinner {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+
+  ion-img {
+    width: 80px;
+    height: 100px;
+    margin-left: 21px;
+    // text-align: center;
+  }
+
+  .spin-container {
+    padding: 22px;
+
+    ion-spinner {
+      margin-left: 5px;
+    }
+  }
+}

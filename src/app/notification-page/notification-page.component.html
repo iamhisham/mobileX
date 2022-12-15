@@ -1,0 +1,170 @@
+<ion-header class="header-container ion-no-border">
+  <ion-toolbar>
+    <ion-grid class="ion-no-padding">
+      <ion-row class="row-wrapper">
+        <ion-col class="title-column">
+          <div lines="none" class="title-content  ion-no-margin ion-no-padding">
+            <h1>Notification</h1>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="wrapper">
+    <ion-grid class="ion-no-padding" class="main-grid-container">
+      <ion-row>
+        <ion-col size-lg="3" size-md="0" class="notification-side-container ion-no-padding ion-hide-lg-down">
+          <ion-list class="filter-search-option ion-padding-horizontal">
+            <ion-label class="filter-option font-size ion-margin-vertical">Filter</ion-label>
+            <ion-searchbar placeholder="Search" class="ion-search-bar ion-no-padding">
+            </ion-searchbar>
+          </ion-list>
+          <!-- category list  -->
+          <div class="checkbox-content ion-margin-top">
+            <ion-label class="check-box-tilte-container">
+              <p>Status<span>({{selectedStatusList.length}})</span> </p>
+            </ion-label>
+            <!-- checkbox All and others -->
+            <ion-item class="check-box-wrapper">
+              <ion-checkbox (click)="selectOrUnselectAllNotification($event)"
+                [indeterminate]="selectedStatusList.length > 0 && selectedStatusList.length !== statusList.length"
+                [checked]="selectedStatusList.length === statusList.length">
+              </ion-checkbox>
+              <ion-label class="ion-padding"> All </ion-label>
+            </ion-item>
+            <ion-item class="check-box-wrapper" *ngFor="let status of statusList">
+              <ion-checkbox (click)="filterednotification($event, status.id)"
+                [checked]="selectedStatusList.indexOf(status.id)!== -1"></ion-checkbox>
+              <ion-label class="ion-padding"> {{status.name}}</ion-label>
+            </ion-item>
+            <!--  -->
+            <ion-label class="check-box-tilte-container">
+              <!-- <p style="margin: 0;">Created Date</p> -->
+            </ion-label>
+            <div class="item item-icon-left" ion-datetime-picker date monday-first ng-model="dateValue">
+              <i class="icon ion-ios-calendar-outline positive"></i>
+
+            </div>
+          </div>
+        </ion-col>
+
+        <ion-col size-lg="9" class="ion-no-padding container-background">
+          <ion-grid class="padding-hide-md-down right-contant">
+            <ion-row>
+              <ion-col size-md="12" class="ion-no-padding">
+                <ion-row>
+                  <!-- table-top-layer-btns -->
+                  <ion-col size-lg="8" offset-lg="4" size-md="12" offset-md="0" size-sm="12" offset-sm="0" size-xs="12"
+                    offset-xs="0" class=" ion-no-padding ion-margin">
+                    <div class="table-top-layer-btns">
+                      <ion-searchbar placeholder="Search" show-clear-button="focus" matInput
+                        (ionChange)=" applyFilter($event)" #input class="ion-custom-search ion-no-padding ">
+                      </ion-searchbar>
+                      <ion-button routerLink="/notification/create" expand="block" routerLinkActive="active-link"
+                        class="create-view-btn ion-no-margin  ion-text-capitalize" color="dark">
+                        <ion-img slot="start" src="../../assets/icon/createnotification.png"></ion-img>
+                        Create Notification
+                      </ion-button>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+              <!-- Angular Material DATATABLE -->
+              <ion-col size="12" class="ion-no-padding">
+                <ion-row>
+                  <ion-col size-md="12" size-sm="12" size-xs="12" class="ion-no-padding">
+                    <section class=" mat-elevation-z8 table-outer-layout" #mytable>
+                      <div class="spinner" *ngIf="showSpinner">
+                        <mat-progress-spinner mode="indeterminate" diameter="50">
+                        </mat-progress-spinner>
+                      </div>
+                      <table mat-table [dataSource]="dataSource" matSort>
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="id">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'w-50'"> ID </th>
+                          <td mat-cell *matCellDef="let element">
+                            <a [routerLink]="['/notification', element.id]"> {{element.id}} </a>
+                          </td>
+                        </ng-container>
+                        <ng-container matColumnDef="is_bulk_notification">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'w-50'"> User </th>
+                          <td mat-cell *matCellDef="let element">
+                            <ion-img class="user-icon" *ngIf="element.is_bulk_notification"
+                              src="../../../assets/icon/multiUser.png"></ion-img>
+                            <ion-img class="user-icon" *ngIf="!element.is_bulk_notification"
+                              src="../../../assets/icon/singleUser.png"></ion-img>
+                          </td>
+                        </ng-container>
+                        <!-- Priority Column -->
+                        <ng-container matColumnDef="status">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'w-50'"> Status </th>
+                          <td mat-cell *matCellDef="let element" class="textCapitalize">
+                            <span>{{element.status}}</span>
+                          </td>
+                        </ng-container>
+                        <!-- duration Column -->
+                        <ng-container matColumnDef="createdAt">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'w-75'"> Created Time </th>
+                          <td mat-cell *matCellDef="let element"> {{element.createdAt | date: 'dd-MMM yy hh:mm a'}}
+                          </td>
+                        </ng-container>
+                        <!--Rate Limit -->
+                        <ng-container matColumnDef="scheduled_at" #target>
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header [ngClass]="'w-75'"> Sent/Scheduled </th>
+                          <td mat-cell *matCellDef="let element"> {{(element.status === "TRIGGERED" ?
+                            element.processed_at
+                            : (element.status === "SCHEDULED" ? element.scheduled_at : null)) | date: 'dd-MMM yy hh:mm
+                            a'}}
+                          </td>
+                        </ng-container>
+                        <!-- Star Column -->
+                        <ng-container matColumnDef="final" stickyEnd>
+                          <th mat-header-cell *matHeaderCellDef aria-label="row actions" class="right-arrow">
+                            <ion-icon name="chevron-forward-outline" class="ion-hide-md-up" style="font-size: 23px;"
+                              (click)="scrollRight()">
+                            </ion-icon>
+                          </th>
+                          <td mat-cell *matCellDef="let element">
+                            <mat-icon [id]="element.id" class="cursor-pointer">more_vert</mat-icon>
+                            <ion-popover [trigger]="element.id" [dismissOnSelect]="true" class="edit-delete-popover">
+                              <ng-template>
+                                <ion-content>
+                                  <ion-list>
+                                    <ion-item [button]="true" [routerLink]="['/notification', element.id]">
+                                      {{element.is_processed ? 'View' : 'Edit'}}
+                                    </ion-item>
+                                    <ion-item [button]="true" (click)="confirmDelete(element.id)" lines="none">Delete
+                                    </ion-item>
+                                  </ion-list>
+                                </ion-content>
+                              </ng-template>
+                            </ion-popover>
+                          </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
+                        <tr class="mat-row" *matNoDataRow>
+                          <td class="mat-cell" colspan="4">No data found
+                            <span style="color: red;">{{input.value}}</span>
+                          </td>
+                        </tr>
+                      </table>
+                    </section>
+                    <div class="paginator-footer">
+                      <mat-paginator [pageSizeOptions]="[5, 10, 20]" class="mat-paginator-sticky"
+                        aria-label="Select page">
+                      </mat-paginator>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,149 @@
+@import "../../theme/table.scss";
+
+.header-container {
+  border-bottom: 0.5px solid #dadada !important;
+}
+.main-grid-container {
+  padding: 0px;
+}
+
+ion-content {
+  ion-grid {
+    height: 100%;
+    .notification-side-container {
+      border-right: 0.5px solid #dadada;
+
+      .filter-search-option {
+        padding: 37px 25px 5px 25px;
+        color: #344563;
+
+        .filter-option {
+          font-weight: 600;
+        }
+
+        .ion-search-bar {
+          margin-top: 20px;
+          --box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
+            rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+          --border-radius: 24px;
+          --icon-color: #50f40c;
+          --color: #0f261f;
+        }
+      }
+    }
+  }
+}
+
+.wrapper {
+  height: 100%;
+  // background-color: #e21919;
+}
+
+.main-grid-container {
+  height: 100%;
+}
+
+// category list design ***
+.category-list {
+  line-height: 0px;
+  padding-top: 0px;
+
+  .category-list-header {
+    ion-list-header {
+      font-weight: 600;
+      font-size: 14px;
+      color: #344563;
+    }
+
+    ion-button {
+      text-transform: none;
+    }
+  }
+}
+
+// category list design ***
+.ion-padding-horizontal {
+  line-height: 1px;
+  padding-top: 0px;
+
+  .category-list-header {
+    ion-list-header {
+      font-weight: 600;
+      font-size: 14px;
+      color: #344563;
+    }
+
+    ion-button {
+      text-transform: none;
+    }
+  }
+}
+
+//for col 9
+
+.container-background {
+  background-color: #fafafa;
+  padding-bottom: 9.5%;
+}
+
+//search btn and notification btn
+
+//columns style start
+.w-50 {
+  min-width: 90px;
+  max-width: 90px;
+}
+
+.w-75 {
+  min-width: 160px;
+  max-width: 160px;
+}
+
+.w-100 {
+  min-width: 180px;
+  max-width: 180px;
+}
+
+.right-contant {
+  padding-bottom: 17px;
+}
+
+//horixontal gap for checkbox outer div
+.checkbox-content {
+  padding: 0% 3% 0% 3%;
+
+  .check-box-tilte-container p {
+    padding-top: 5%;
+    padding-left: 19px !important;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .check-box-wrapper {
+    font-size: 12px;
+    padding: 0% !important;
+    --background: #fbfbfb;
+
+    ion-label {
+      line-height: 0%;
+      font-size: 12px;
+    }
+  }
+}
+
+.check-box-wrapper ion-checkbox {
+  --size: 15px;
+  --background-checked: #079f71;
+}
+
+ion-checkbox::part(container) {
+  border: 1.8px solid rgba(128, 128, 128, 0.295);
+  border-radius: 2px;
+}
+
+.user-icon {
+  width: 20px;
+  height: 20px;
+}
